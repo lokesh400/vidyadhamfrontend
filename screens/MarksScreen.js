@@ -121,7 +121,7 @@ const MarksScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#020617",
+    backgroundColor: "#F3F8FF",
   },
   loader: {
     flex: 1,
@@ -132,16 +132,16 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   card: {
-    backgroundColor: "#0B1222",
+    backgroundColor: "#FFFFFF",
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: "#1F2A44",
+    borderColor: "#DCEBFF",
     padding: 16,
     marginBottom: 16,
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
+    shadowColor: "#60A5FA",
+    shadowOpacity: 0.14,
+    shadowOffset: { width: 0, height: 8 },
+    shadowRadius: 12,
     elevation: 6,
   },
   cardHeader: {
@@ -153,13 +153,13 @@ const styles = StyleSheet.create({
   testTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#E2E8F0",
+    color: "#0F172A",
   },
   examType: {
     fontSize: 14,
     fontWeight: "bold",
-    color: "#A5B4FC",
-    backgroundColor: "#1E1B4B",
+    color: "#2563EB",
+    backgroundColor: "#E6F0FF",
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 4,
@@ -167,23 +167,23 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontSize: 12,
-    color: "#93C5FD",
+    color: "#64748B",
     marginBottom: 12,
   },
   scoresContainer: {
     borderTopWidth: 1,
-    borderTopColor: "#1F2A44",
+    borderTopColor: "#E2E8F0",
     paddingTop: 12,
     marginBottom: 12,
   },
   subjectText: {
     fontSize: 15,
-    color: "#CBD5E1",
+    color: "#334155",
     marginBottom: 6,
   },
   scoreText: {
     fontWeight: "600",
-    color: "#E2E8F0",
+    color: "#0F172A",
   },
   totalContainer: {
     flexDirection: "row",
@@ -193,19 +193,19 @@ const styles = StyleSheet.create({
   totalLabel: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#E2E8F0",
+    color: "#0F172A",
     marginRight: 8,
   },
   totalScore: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#22D3EE",
+    color: "#0EA5E9",
   },
   emptyText: {
     textAlign: "center",
     marginTop: 40,
     fontSize: 16,
-    color: "#93C5FD",
+    color: "#64748B",
   },
 });
 

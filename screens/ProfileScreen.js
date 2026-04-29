@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
 import Loader from '../components/Loader';
 import TopBar from '../components/TopBar';
@@ -23,8 +24,7 @@ export default function ProfileScreen({ route, navigation }) {
 
   const fetchProfile = async () => {
     try {
-
-      const response = await api.get(`/me`);
+      const response = await api.get('/me');
       if (response.ok) {
         const normalizedProfile = normalizeProfilePayload(response.data);
         setProfileData(normalizedProfile || initialUser || null);
@@ -39,7 +39,17 @@ export default function ProfileScreen({ route, navigation }) {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      let response = await api.post('/m/auth/logout', {});
+      if (!response.ok) response = await api.get('/m/auth/logout');
+      if (!response.ok) response = await api.post('/auth/logout', {});
+      if (!response.ok) response = await api.get('/auth/logout');
+    } catch (error) {
+      // Continue local logout even if server endpoint fails.
+    }
+
+    await AsyncStorage.removeItem('userToken');
     navigation.reset({
       index: 0,
       routes: [{ name: 'Login' }],
@@ -49,7 +59,7 @@ export default function ProfileScreen({ route, navigation }) {
   return (
     <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
       <StatusBar style="dark" backgroundColor="#FFFFFF" />
-      <TopBar rightIcon="person-circle" rightIconColor="#4f46e5" />
+      <TopBar rightIcon="person-circle" rightIconColor="#2563EB" />
 
       <View style={styles.container}>
         {loading ? (
@@ -183,11 +193,11 @@ export default function ProfileScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   safeArea: { 
     flex: 1, 
-    backgroundColor: '#020617' 
+    backgroundColor: '#F3F8FF' 
   },
   container: { 
     flex: 1, 
-    backgroundColor: '#020617',
+    backgroundColor: '#F3F8FF',
   },
   loaderContainer: {
     flex: 1,
@@ -213,7 +223,7 @@ const styles = StyleSheet.create({
     width: 116,
     height: 116,
     borderRadius: 58,
-    backgroundColor: '#E0E7FF',
+    backgroundColor: '#DBEAFE',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 14,
@@ -222,10 +232,10 @@ const styles = StyleSheet.create({
     width: 102,
     height: 102,
     borderRadius: 51,
-    backgroundColor: '#6366F1',
+    backgroundColor: '#2563EB',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#4f46e5',
+    shadowColor: '#3B82F6',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -234,14 +244,14 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 26,
     fontWeight: '800',
-    color: '#E2E8F0',
+    color: '#0F172A',
     marginBottom: 8,
   },
   rolePill: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#EEF2FF',
-    borderColor: '#C7D2FE',
+    borderColor: '#BFDBFE',
     borderWidth: 1,
     paddingHorizontal: 12,
     paddingVertical: 6,
@@ -250,11 +260,11 @@ const styles = StyleSheet.create({
   roleLabel: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#A5B4FC',
+    color: '#2563EB',
     marginLeft: 6,
   },
   infoCard: {
-    backgroundColor: '#0B1222',
+    backgroundColor: '#FFFFFF',
     borderRadius: 18,
     padding: 18,
     shadowColor: '#000',
@@ -264,12 +274,12 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginBottom: 14,
     borderWidth: 1,
-    borderColor: '#1F2A44',
+    borderColor: '#DCEBFF',
   },
   sectionTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#E2E8F0',
+    color: '#0F172A',
     marginBottom: 14,
   },
   infoGrid: {
@@ -277,10 +287,10 @@ const styles = StyleSheet.create({
   },
   infoTile: {
     flex: 1,
-    backgroundColor: '#101B33',
+    backgroundColor: '#F8FBFF',
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: '#1F2A44',
+    borderColor: '#DCEBFF',
     padding: 12,
   },
   infoTileSpacing: {
@@ -290,7 +300,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: '#1E1B4B',
+    backgroundColor: '#E6F0FF',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
@@ -304,7 +314,7 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34,
     borderRadius: 17,
-    backgroundColor: '#1E293B',
+    backgroundColor: '#EFF6FF',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 1,
@@ -315,22 +325,22 @@ const styles = StyleSheet.create({
   },
   infoLabel: {
     fontSize: 12,
-    color: '#93C5FD',
+    color: '#475569',
     marginBottom: 3,
     fontWeight: '600',
   },
   infoValue: {
     fontSize: 15,
     fontWeight: '600',
-    color: '#E2E8F0',
+    color: '#0F172A',
   },
   divider: {
     height: 1,
-    backgroundColor: '#1F2A44',
+    backgroundColor: '#E2E8F0',
     marginVertical: 10,
   },
   logoutButton: {
-    backgroundColor: '#DC2626',
+    backgroundColor: '#EF4444',
     paddingVertical: 14,
     paddingHorizontal: 16,
     borderRadius: 14,
@@ -338,7 +348,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderWidth: 1,
-    borderColor: '#B91C1C',
+    borderColor: '#DC2626',
     shadowColor: '#DC2626',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.25,

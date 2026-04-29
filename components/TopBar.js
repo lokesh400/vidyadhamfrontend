@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 const iconImg = require('../assets/icon.png');
 
 export default function TopBar({
-  title = 'Vidya Dham Mandir',
+  title = 'Vidya Dham Mandir Parents App',
   rightIcon = 'person-circle-outline',
   rightIconColor = '#2563EB',
   onRightPress,

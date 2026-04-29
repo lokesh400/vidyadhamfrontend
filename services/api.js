@@ -14,6 +14,7 @@ const request = async (endpoint, method = 'GET', body = null, token = null) => {
   const options = {
     method,
     headers,
+    credentials: 'include',
   };
 
   if (body) {
@@ -22,7 +23,17 @@ const request = async (endpoint, method = 'GET', body = null, token = null) => {
 
   try {
     const response = await fetch(`${BASE_URL}${endpoint}`, options);
-    const data = await response.json();
+    const raw = await response.text();
+    let data;
+
+    try {
+      data = raw ? JSON.parse(raw) : {};
+    } catch (parseError) {
+      data = {
+        message: 'Non-JSON response received from server',
+        raw,
+      };
+    }
 
     return {
       ok: response.ok,

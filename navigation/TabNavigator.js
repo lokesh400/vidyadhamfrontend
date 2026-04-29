@@ -3,6 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import DashboardScreen from '../screens/DashboardScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import ResultScreen from '../screens/ResultScreen';
+import TimeTableScreen from '../screens/TimeTableScreen';
+import AttendanceScreen from '../screens/AttendanceScreen';
 import UniversalTabBar from '../components/UniversalTabBar';
 
 const Tab = createBottomTabNavigator();
@@ -13,7 +16,7 @@ export default function TabNavigator({ route }) {
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="DashboardTab"
       tabBar={(props) => <UniversalTabBar {...props} />}
       screenOptions={() => ({
         headerShown: false,
@@ -21,14 +24,29 @@ export default function TabNavigator({ route }) {
       })}
     >
       <Tab.Screen 
-        name="Home" 
+        name="DashboardTab" 
         component={DashboardScreen} 
         initialParams={{ user }} 
       />
-      <Tab.Screen 
-        name="Profile" 
-        component={ProfileScreen} 
-        initialParams={{ user }} 
+      <Tab.Screen
+        name="Attendance"
+        component={AttendanceScreen}
+        initialParams={{ user }}
+      />
+      <Tab.Screen
+        name="Result"
+        component={ResultScreen}
+        initialParams={{ user }}
+      />
+      <Tab.Screen
+        name="TimeTable"
+        component={TimeTableScreen}
+        initialParams={{ user }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        initialParams={{ user }}
       />
     </Tab.Navigator>
   );

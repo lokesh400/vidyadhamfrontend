@@ -56,7 +56,7 @@ export default function ForgotPasswordScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar style="light" backgroundColor="#0f172a" />
+      <StatusBar style="dark" backgroundColor="#F3F8FF" />
       <KeyboardAvoidingView 
         style={styles.container} 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -64,7 +64,7 @@ export default function ForgotPasswordScreen({ navigation }) {
         <Animated.View style={[styles.content, { opacity: fadeAnim, transform: [{ translateY: slideAnim }] }]}>
           <View style={styles.logoContainer}>
             <Image source={iconImg} style={styles.logo} resizeMode="contain" />
-            <Text style={styles.brandName}>Vidya Dham Mandir</Text>
+            <Text style={styles.brandName}>Vidya Dham Mandir Parents App</Text>
           </View>
 
           <Text style={styles.title}>Reset Password</Text>
@@ -105,7 +105,7 @@ export default function ForgotPasswordScreen({ navigation }) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#020617',
+    backgroundColor: '#F3F8FF',
   },
   container: { 
     flex: 1, 
@@ -128,51 +128,51 @@ const styles = StyleSheet.create({
   brandName: {
     fontSize: 22,
     fontWeight: '800',
-    color: '#E2E8F0',
+    color: '#0F172A',
     letterSpacing: 0.5,
   },
   title: { 
     fontSize: 32, 
     fontWeight: '800', 
-    color: '#ffffff',
+    color: '#0F172A',
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: '#93C5FD',
+    color: '#475569',
     marginBottom: 36,
   },
   inputWrapper: {
     marginBottom: 32,
-    shadowColor: '#000',
+    shadowColor: '#60A5FA',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.28,
-    shadowRadius: 8,
-    elevation: 6,
+    shadowOpacity: 0.14,
+    shadowRadius: 12,
+    elevation: 5,
   },
   input: { 
-    backgroundColor: '#0B1222',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1, 
-    borderColor: '#1F2A44', 
+    borderColor: '#DCEBFF', 
     padding: 18, 
     borderRadius: 16,
     fontSize: 16,
-    color: '#f8fafc',
+    color: '#0F172A',
   },
   button: {
-    backgroundColor: '#312E81',
+    backgroundColor: '#2563EB',
     height: 60,
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#312E81',
+    shadowColor: '#3B82F6',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.3,
     shadowRadius: 10,
     elevation: 8,
   },
   buttonDisabled: {
-    backgroundColor: '#3730a3',
+    backgroundColor: '#93C5FD',
     shadowOpacity: 0,
     elevation: 0,
   },
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   linkText: {
-    color: '#A5B4FC',
+    color: '#2563EB',
     fontSize: 15,
     fontWeight: '600',
   }

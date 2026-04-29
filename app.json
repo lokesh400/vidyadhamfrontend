@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "VidyaDhamMandir",
+    "name": "Vidya Dham Mandir Parents App",
     "slug": "VidyaDhamMandir",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,19 +9,19 @@
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/icon.png",
-      "resizeMode": "contain",
+      "resizeMode": "contain"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/icon.png"
       },
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     }
   }
 }
