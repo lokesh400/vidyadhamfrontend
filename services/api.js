@@ -1,6 +1,6 @@
-// const BASE_URL = 'https://vidyadhammandirerp.onrender.com';
+const BASE_URL = 'https://management.vidyadhambook.com/api';
 
-const BASE_URL = 'http://10.25.167.198:4000/api';
+// const BASE_URL = 'http://10.25.167.198:4000/api';
 
 const request = async (endpoint, method = 'GET', body = null, token = null) => {
   const headers = {
